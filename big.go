@@ -2,7 +2,7 @@ package math
 
 import (
 	"crypto/rand"
-	"github.com/sea-project/sea-pkg/util/conv"
+	bytes "github.com/sea-project/stdlib-bytes"
 	"math/big"
 )
 
@@ -147,7 +147,7 @@ func GetDataBig(data []byte, start *big.Int, size *big.Int) []byte {
 
 	s := BigMin(start, dlen)
 	e := BigMin(new(big.Int).Add(s, size), dlen)
-	return conv.RightPadBytes(data[s.Uint64():e.Uint64()], int(size.Uint64()))
+	return bytes.RightPadBytes(data[s.Uint64():e.Uint64()], int(size.Uint64()))
 }
 
 // BigUint64 返回已转换为uint64的整数，并返回它是否在进程中溢出
